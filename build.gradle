@@ -32,3 +32,14 @@ application {
     // Define the main class for the application.
     mainClassName = 'java.playground.App'
 }
+
+
+
+jar {
+    manifest {
+        attributes(
+                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+                'Main-Class': 'com.galvanize.Application'
+        )
+    }
+}
